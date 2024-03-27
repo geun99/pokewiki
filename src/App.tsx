@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { getPokemonNamesInKorean } from "./apis/pokemon";
+import React from "react";
+import Main from "./pages/Main";
 
-const PokemonList: React.FC = () => {
-  const [pokemonNames, setPokemonNames] = useState<string[]>([]);
-  useEffect(() => {
-    getPokemonNamesInKorean().then((names) => {
-      setPokemonNames(names);
-    });
-  }, []);
+const App = () => {
   return (
-    <div>
-      <h1>Poke Wiki</h1>
-      <ul>
-        {pokemonNames.map((name) => (
-          <li key={name}>{name}</li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <Main />
+    </>
   );
 };
 
-export default PokemonList;
+export default App;
