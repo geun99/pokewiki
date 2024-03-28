@@ -23,10 +23,8 @@ const TypeButtons: React.FC<TypeButtonsProps> = ({ onTypeClick }) => {
     "rock",
     "ghost",
     "dragon",
-    "dark",
     "steel",
     "fairy",
-    "unknown",
     "normal",
   ];
 
@@ -47,7 +45,7 @@ const TypeButtons: React.FC<TypeButtonsProps> = ({ onTypeClick }) => {
 
 const TypeButtonsStyle = styled.div`
   display: grid;
-  grid-template-columns: repeat(10, minmax(100px, 1fr));
+  grid-template-columns: repeat(9, minmax(100px, 1fr));
   gap: 15px;
   padding: 10px;
   margin: 10px;

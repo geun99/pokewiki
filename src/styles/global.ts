@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     min-height: 100vh;
     font-family: 'Noto Sans KR', sans-serif;
     background-color: #b0daea;
