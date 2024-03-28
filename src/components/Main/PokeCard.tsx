@@ -1,22 +1,28 @@
 import styled from "styled-components";
-
 import { pokemon } from "../../types/pokemon.type";
 import PokeTypes from "./PokeTypes";
+import { useNavigate } from "react-router";
 
 interface PokeCardProps {
   pokemons: pokemon[];
 }
 
 const PokeCard: React.FC<PokeCardProps> = ({ pokemons }) => {
+  const navigate = useNavigate();
   return (
     <PokeCardStyle>
       {pokemons?.map((pokemon) => (
-        <div key={pokemon.id} className="card">
+        <div
+          key={pokemon.id}
+          className="card"
+          onClick={() => {
+            navigate(`/detail/${pokemon.id}`);
+          }}
+        >
           <h2>
             {pokemon.id} {pokemon.name}
           </h2>
-
-          <img src={pokemon.img} alt={pokemon.name} />
+          <img src={pokemon.img} alt={pokemon.name} loading="lazy" />
           <PokeTypes types={pokemon.types} />
         </div>
       ))}

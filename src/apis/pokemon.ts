@@ -1,6 +1,6 @@
 import axios from "axios";
 
-interface poketype {
+export interface poketype {
   slot: number;
   type: {
     name: string;
