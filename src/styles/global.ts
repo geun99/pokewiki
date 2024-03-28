@@ -7,6 +7,15 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     border: 0;
   }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #b0daea;
+  }
   .grass{
     background-color: #78C850;
    }

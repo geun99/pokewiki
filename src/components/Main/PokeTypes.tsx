@@ -28,6 +28,8 @@ const PokeTypesStyle = styled.div`
     border-radius: 100px;
     text-align: center;
     margin: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
   .oneType {
     flex-basis: 100%;

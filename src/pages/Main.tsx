@@ -4,7 +4,6 @@ import { pokemon } from "../types/pokemon.type";
 import styled from "styled-components";
 import PokeCard from "../components/Main/PokeCard";
 import TypeButtons from "../components/Main/TypeButtons";
-import Navbar from "../components/Common/Navbar";
 
 const Main: React.FC = () => {
   const [pokemons, setPokemons] = useState<pokemon[]>([]);
@@ -30,7 +29,6 @@ const Main: React.FC = () => {
 
   return (
     <MainStyle>
-      <Navbar />
       <TypeButtons onTypeClick={handleTypeClick} />
       {!pokemons?.length && <p>Loading...</p>}
       <div className="pokemons">

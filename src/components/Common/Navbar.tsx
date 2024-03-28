@@ -12,6 +12,9 @@ const Navbar = () => {
 
 const NavbarStyle = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
   img {
     width: 50px;
   }

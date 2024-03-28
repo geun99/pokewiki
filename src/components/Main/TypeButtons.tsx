@@ -47,11 +47,12 @@ const TypeButtons: React.FC<TypeButtonsProps> = ({ onTypeClick }) => {
 
 const TypeButtonsStyle = styled.div`
   display: grid;
-  grid-template-columns: repeat(8, minmax(100px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(10, minmax(100px, 1fr));
+  gap: 15px;
   padding: 10px;
+  margin: 10px;
   button {
-    width: 100px;
+    width: 150px;
     border-radius: 10px;
     border: 1px solid #000;
     font-size: 1.5rem;
