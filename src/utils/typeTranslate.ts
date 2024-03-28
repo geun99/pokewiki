@@ -38,6 +38,8 @@ export const typeTranslate = (type: string) => {
       return "언노운";
     case "psychic":
       return "에스퍼";
+    case "all":
+      return "전체";
     default:
   }
 };
