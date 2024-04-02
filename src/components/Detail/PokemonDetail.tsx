@@ -10,8 +10,10 @@ const PokemonDetail = ({ detail, height, weight }: Props) => {
   return (
     <PokemonDetailStyle>
       <p>{detail}</p>
-      <p>키 : {height / 10}m</p>
-      <p>몸무게 : {weight / 10}kg</p>
+      <div className="height-weight">
+        <p>키 : {height / 10}m</p>
+        <p>몸무게 : {weight / 10}kg</p>
+      </div>
     </PokemonDetailStyle>
   );
 };
@@ -24,6 +26,20 @@ const PokemonDetailStyle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  .height-weight{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    p{
+      flex-basis: 50%;
+      padding: 5px;
+      border-radius: 100px;
+      background-color: #bbb;
+      text-align: center;
+      margin: 5px;
+      font-size: 1.2rem;
+  }
 `;
 
 export default PokemonDetail;

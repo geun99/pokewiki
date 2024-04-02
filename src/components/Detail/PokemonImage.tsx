@@ -14,8 +14,10 @@ const PokemonImage = ({ image, alt }: Props) => {
 };
 
 const PokemonImageStyle = styled.div`
-  width: auto;
-  height: 475px;
+  img {
+    width: auto;
+    height: 250px;
+  }
 `;
 
 export default PokemonImage;

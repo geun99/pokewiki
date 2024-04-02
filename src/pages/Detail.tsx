@@ -8,6 +8,7 @@ import PokemonInform from "../components/Detail/PokemonInform";
 import PokemonDetail from "../components/Detail/PokemonDetail";
 import PageMoveButtons from "../components/Detail/PageMoveButtons";
 import PokeTypes from "../components/Common/PokeTypes";
+import PokemonStat from "../components/Detail/PokemonStat";
 
 const Detail = () => {
   const { id }: { id: string } = useParams() as { id: string };
@@ -39,6 +40,7 @@ const Detail = () => {
         />
       )}
       {pokemon && <PageMoveButtons id={id} navigate={navigate} />}
+      {pokemon && <PokemonStat stats={pokemon.stats} />}
     </DetailStyle>
   );
 };
@@ -49,7 +51,6 @@ const DetailStyle = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #eee;
-  min-height: 100vh;
   border-radius: 20px;
   padding: 10px;
   max-width: 500px;

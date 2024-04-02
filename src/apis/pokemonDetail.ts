@@ -1,25 +1,6 @@
 import axios from "axios";
 import { getPokemonTypes, poketype } from "./pokemon";
-
-interface entry {
-  flavor_text: string;
-  language: {
-    name: string;
-    url: string;
-  };
-  version: {
-    name: string;
-    url: string;
-  };
-}
-
-interface genus {
-  genus: string;
-  language: {
-    name: string;
-    url: string;
-  };
-}
+import { entry, genus, stats } from "../types/pokemon.type";
 
 export const getPokemonDetail = async (id: number) => {
   const speciesResponse = await axios.get(
@@ -53,6 +34,7 @@ export const getPokemonDetail = async (id: number) => {
     (genus: genus) => genus.language.name === "en"
   )?.genus;
   const genera = koGenera ? koGenera : enGenera ? enGenera : "";
+  const stats = pokemonResponse.data.stats.map((stat: stats) => stat.base_stat);
   return {
     id: speciesResponse.data.id,
     img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
@@ -62,5 +44,6 @@ export const getPokemonDetail = async (id: number) => {
     weight: pokemonResponse.data.weight,
     height: pokemonResponse.data.height,
     genera,
+    stats,
   };
 };
