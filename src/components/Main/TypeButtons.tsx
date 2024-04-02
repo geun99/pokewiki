@@ -8,7 +8,7 @@ interface TypeButtonsProps {
 
 const TypeButtons: React.FC<TypeButtonsProps> = ({ onTypeClick }) => {
   const typeClassNames = [
-    "all", // Add a button for displaying all Pokémon
+    "all",
     "grass",
     "fire",
     "water",

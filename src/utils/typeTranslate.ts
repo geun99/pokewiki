@@ -34,8 +34,6 @@ export const typeTranslate = (type: string) => {
       return "강철";
     case "fairy":
       return "페어리";
-    case "unknown":
-      return "언노운";
     case "psychic":
       return "에스퍼";
     case "all":

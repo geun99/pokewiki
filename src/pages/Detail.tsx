@@ -3,7 +3,10 @@ import { useNavigate, useParams } from "react-router";
 import styled from "styled-components";
 import { pokemonDetail } from "../types/pokemon.type";
 import { getPokemonDetail } from "../apis/pokemonDetail";
-import { typeTranslate } from "../utils/typeTranslate";
+import PokemonImage from "../components/Detail/PokemonImage";
+import PokemonInform from "../components/Detail/PokemonInform";
+import PokemonType from "../components/Detail/PokemonType";
+import PokemonDetail from "../components/Detail/PokemonDetail";
 
 const Detail = () => {
   const { id }: { id: string } = useParams() as { id: string };
@@ -18,25 +21,17 @@ const Detail = () => {
   const navigate = useNavigate();
   return (
     <DetailStyle>
-      <h1>{pokemon?.id}</h1>
-      <h1>{pokemon?.name}</h1>
-      {pokemon?.img && (
-        <img src={pokemon.img} alt={pokemon?.name} loading="lazy" />
+      {pokemon && <PokemonInform id={pokemon.id} name={pokemon.name} />}
+      {pokemon && <PokemonImage image={pokemon.img} alt={pokemon.name} />}
+      {pokemon && <PokemonType types={pokemon.types} />}
+      {pokemon && (
+        <PokemonDetail
+          detail={pokemon.detail}
+          height={pokemon.height}
+          weight={pokemon.weight}
+          genera={pokemon.genera}
+        />
       )}
-      <div className="types">
-        {pokemon &&
-          pokemon.types.length > 1 &&
-          pokemon.types.map((type) => {
-            return <h1>{typeTranslate(type)}</h1>;
-          })}
-        {pokemon && pokemon.types.length == 1 && (
-          <h1>{typeTranslate(pokemon.types[0])}</h1>
-        )}
-      </div>
-      <p>{pokemon?.detail}</p>
-      <p>{pokemon?.height}</p>
-      <p>{pokemon?.weight}</p>
-      <p>{pokemon?.genera}</p>
       <button
         onClick={() => {
           navigate(`/detail/${parseInt(id) - 1}`);
