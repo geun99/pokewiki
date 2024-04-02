@@ -5,9 +5,9 @@ import { pokemonDetail } from "../types/pokemon.type";
 import { getPokemonDetail } from "../apis/pokemonDetail";
 import PokemonImage from "../components/Detail/PokemonImage";
 import PokemonInform from "../components/Detail/PokemonInform";
-import PokemonType from "../components/Detail/PokemonType";
 import PokemonDetail from "../components/Detail/PokemonDetail";
 import PageMoveButtons from "../components/Detail/PageMoveButtons";
+import PokeTypes from "../components/Common/PokeTypes";
 
 const Detail = () => {
   const { id }: { id: string } = useParams() as { id: string };
@@ -22,15 +22,20 @@ const Detail = () => {
   const navigate = useNavigate();
   return (
     <DetailStyle>
-      {pokemon && <PokemonInform id={pokemon.id} name={pokemon.name} />}
+      {pokemon && (
+        <PokemonInform
+          id={pokemon.id}
+          name={pokemon.name}
+          genera={pokemon.genera}
+        />
+      )}
       {pokemon && <PokemonImage image={pokemon.img} alt={pokemon.name} />}
-      {pokemon && <PokemonType types={pokemon.types} />}
+      {pokemon && <PokeTypes types={pokemon.types} />}
       {pokemon && (
         <PokemonDetail
           detail={pokemon.detail}
           height={pokemon.height}
           weight={pokemon.weight}
-          genera={pokemon.genera}
         />
       )}
       {pokemon && <PageMoveButtons id={id} navigate={navigate} />}
@@ -43,7 +48,12 @@ const DetailStyle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
+  background-color: #eee;
+  min-height: 100vh;
+  border-radius: 20px;
+  padding: 10px;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 `;
 
 export default Detail;

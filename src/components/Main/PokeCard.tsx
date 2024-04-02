@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { pokemon } from "../../types/pokemon.type";
-import PokeTypes from "./PokeTypes";
+import PokeTypes from "../Common/PokeTypes";
 import { useNavigate } from "react-router";
 
 interface PokeCardProps {

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import PokeCard from "../components/Main/PokeCard";
 import TypeButtons from "../components/Main/TypeButtons";
 import GenerationButtons from "../components/Main/GenerationButtons";
+import ScrollTopButton from "../components/Common/ScrollTopButton";
 
 const Main: React.FC = () => {
   const [pokemons, setPokemons] = useState<pokemon[]>([]);
@@ -33,10 +34,9 @@ const Main: React.FC = () => {
     <MainStyle>
       <TypeButtons onTypeClick={handleTypeClick} />
       {!pokemons?.length && <p>Loading...</p>}
-      <div className="pokemons">
-        <PokeCard pokemons={filteredPokemons} />
-      </div>
+      <PokeCard pokemons={filteredPokemons} />
       <GenerationButtons onGenerationClick={setGeneration} />
+      <ScrollTopButton />
     </MainStyle>
   );
 };
