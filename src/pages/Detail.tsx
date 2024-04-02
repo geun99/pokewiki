@@ -7,6 +7,7 @@ import PokemonImage from "../components/Detail/PokemonImage";
 import PokemonInform from "../components/Detail/PokemonInform";
 import PokemonType from "../components/Detail/PokemonType";
 import PokemonDetail from "../components/Detail/PokemonDetail";
+import PageMoveButtons from "../components/Detail/PageMoveButtons";
 
 const Detail = () => {
   const { id }: { id: string } = useParams() as { id: string };
@@ -32,20 +33,7 @@ const Detail = () => {
           genera={pokemon.genera}
         />
       )}
-      <button
-        onClick={() => {
-          navigate(`/detail/${parseInt(id) - 1}`);
-        }}
-      >
-        left
-      </button>
-      <button
-        onClick={() => {
-          navigate(`/detail/${parseInt(id) + 1}`);
-        }}
-      >
-        right
-      </button>
+      {pokemon && <PageMoveButtons id={id} navigate={navigate} />}
     </DetailStyle>
   );
 };

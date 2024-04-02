@@ -42,9 +42,9 @@ const Main: React.FC = () => {
 };
 
 const MainStyle = styled.div`
+  display: flex;
   background-color: #b0daea;
   min-height: 100vh;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: top;
