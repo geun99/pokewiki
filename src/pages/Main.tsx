@@ -4,17 +4,19 @@ import { pokemon } from "../types/pokemon.type";
 import styled from "styled-components";
 import PokeCard from "../components/Main/PokeCard";
 import TypeButtons from "../components/Main/TypeButtons";
+import GenerationButtons from "../components/Main/GenerationButtons";
 
 const Main: React.FC = () => {
   const [pokemons, setPokemons] = useState<pokemon[]>([]);
   const [filteredPokemons, setFilteredPokemons] = useState<pokemon[]>([]);
+  const [generation, setGeneration] = useState<number>(1);
 
   useEffect(() => {
-    getPokemonDatas().then((data) => {
+    getPokemonDatas(generation).then((data) => {
       setPokemons(data);
       setFilteredPokemons(data);
     });
-  }, []);
+  }, [generation]);
 
   const handleTypeClick = (type: string) => {
     if (type === "all") {
@@ -34,6 +36,7 @@ const Main: React.FC = () => {
       <div className="pokemons">
         <PokeCard pokemons={filteredPokemons} />
       </div>
+      <GenerationButtons onGenerationClick={setGeneration} />
     </MainStyle>
   );
 };

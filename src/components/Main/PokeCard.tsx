@@ -37,6 +37,7 @@ const PokeCardStyle = styled.div`
   padding: 10px;
 
   .card {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;

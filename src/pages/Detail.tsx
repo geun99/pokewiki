@@ -6,7 +6,7 @@ import { getPokemonDetail } from "../apis/pokemonDetail";
 import { typeTranslate } from "../utils/typeTranslate";
 
 const Detail = () => {
-  const { id } = useParams();
+  const { id }: { id: string } = useParams() as { id: string };
   const [pokemon, setPokemon] = useState<pokemonDetail>();
   useEffect(() => {
     if (id) {

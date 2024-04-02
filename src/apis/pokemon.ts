@@ -1,4 +1,5 @@
 import axios from "axios";
+import { generation } from "../constants/generation";
 
 export interface poketype {
   slot: number;
@@ -8,10 +9,9 @@ export interface poketype {
   };
 }
 
-export const getPokemonDatas = async () => {
+export const getPokemonDatas = async (gene: number) => {
   const allPokemonData = [];
-  for (let i = 1; i <= 151; i++) {
-    // 1세대 151마리
+  for (let i = generation[gene - 1] + 1; i <= generation[gene]; i++) {
     const speciesResponse = await axios.get(
       `https://pokeapi.co/api/v2/pokemon-species/${i}`
     );
