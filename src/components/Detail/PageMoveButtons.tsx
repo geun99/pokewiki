@@ -1,40 +1,30 @@
 import styled from "styled-components";
-import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
-import { pokemonDetail } from "../../types/pokemon.type";
+import NextPokemonButton from "./Button/NextPokemonButton";
+import PrevPokemonButton from "./Button/PrevPokemonButton";
 
 interface Props {
   id: string;
   navigate: (id: string) => void;
-  prevPokemon: pokemonDetail;
-  nextPokemon: pokemonDetail;
+  prevPokemon?: string;
+  nextPokemon?: string;
 }
 
 const PageMoveButtons = ({ id, navigate, prevPokemon, nextPokemon }: Props) => {
   const prevId = parseInt(id) - 1;
   const nextId = parseInt(id) + 1;
-
+  console.log(prevPokemon, nextPokemon, id);
   return (
     <PageMoveButtonsStyle>
-      {prevId > 0 && (
-        <div className="btn left-btn">
-          <FaArrowCircleLeft
-            onClick={() => {
-              navigate(`/detail/${prevId}`);
-            }}
-          />
-          <p className="info">{prevPokemon.name}</p>
-        </div>
-      )}
-      {nextId <= 1025 && (
-        <div className="btn right-btn disabled">
-          <FaArrowCircleRight
-            onClick={() => {
-              navigate(`/detail/${nextId}`);
-            }}
-          />
-          <p className="info">{nextPokemon.name}</p>
-        </div>
-      )}
+      <NextPokemonButton
+        navigate={navigate}
+        nextId={nextId}
+        nextPokemon={nextPokemon}
+      />
+      <PrevPokemonButton
+        navigate={navigate}
+        prevId={prevId}
+        prevPokemon={prevPokemon}
+      />
     </PageMoveButtonsStyle>
   );
 };

@@ -13,27 +13,32 @@ import PokemonStat from "../components/Detail/PokemonStat";
 const Detail = () => {
   const { id }: { id: string } = useParams() as { id: string };
   const [pokemon, setPokemon] = useState<pokemonDetail>();
-  const [nextPokemon, setNextPokemon] = useState<pokemonDetail>();
-  const [prevPokemon, setPrevPokemon] = useState<pokemonDetail>();
+  const [nextPokemon, setNextPokemon] = useState<string | undefined>(undefined);
+  const [prevPokemon, setPrevPokemon] = useState<string | undefined>(undefined);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (id) {
-      getPokemonDetail(parseInt(id)).then((data) => {
-        setPokemon(data);
+    if (!id) return;
+    getPokemonDetail(parseInt(id)).then((data) => {
+      setPokemon(data);
+    });
+
+    const prevId = parseInt(id) - 1;
+    const nextId = parseInt(id) + 1;
+
+    if (prevId > 0) {
+      getPokemonDetail(prevId).then((prevData) => {
+        setPrevPokemon(prevData.name);
       });
     }
-    if (Number(id) > 0) {
-      getPokemonDetail(parseInt(id) - 1).then((data) => {
-        setPrevPokemon(data);
-      });
-    }
-    if (Number(id) < 1025) {
-      getPokemonDetail(parseInt(id) + 1).then((data) => {
-        setNextPokemon(data);
+
+    if (nextId < 1026) {
+      getPokemonDetail(nextId).then((nextData) => {
+        setNextPokemon(nextData.name);
       });
     }
   }, [id]);
-  const navigate = useNavigate();
+
   return (
     <DetailStyle>
       {pokemon && (
@@ -52,7 +57,7 @@ const Detail = () => {
           weight={pokemon.weight}
         />
       )}
-      {pokemon && nextPokemon && prevPokemon && (
+      {pokemon && (
         <PageMoveButtons
           id={id}
           navigate={navigate}
@@ -60,6 +65,7 @@ const Detail = () => {
           prevPokemon={prevPokemon}
         />
       )}
+
       {pokemon && <PokemonStat stats={pokemon.stats} />}
     </DetailStyle>
   );
