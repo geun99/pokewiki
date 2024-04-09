@@ -1,30 +1,40 @@
 import styled from "styled-components";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
+import { pokemonDetail } from "../../types/pokemon.type";
 
-const PageMoveButtons = ({
-  id,
-  navigate,
-}: {
+interface Props {
   id: string;
   navigate: (id: string) => void;
-}) => {
+  prevPokemon: pokemonDetail;
+  nextPokemon: pokemonDetail;
+}
+
+const PageMoveButtons = ({ id, navigate, prevPokemon, nextPokemon }: Props) => {
   const prevId = parseInt(id) - 1;
   const nextId = parseInt(id) + 1;
 
   return (
     <PageMoveButtonsStyle>
-      <FaArrowCircleLeft
-        className={`btn left-btn ${prevId <= 0 ? "disabled" : ""}`}
-        onClick={() => {
-          if (prevId > 0) navigate(`/detail/${prevId}`);
-        }}
-      />
-      <FaArrowCircleRight
-        className={`btn right-btn ${nextId >= 1025 ? "disabled" : ""}`}
-        onClick={() => {
-          if (nextId <= 1025) navigate(`/detail/${nextId}`);
-        }}
-      />
+      {prevId > 0 && (
+        <div className="btn left-btn">
+          <FaArrowCircleLeft
+            onClick={() => {
+              navigate(`/detail/${prevId}`);
+            }}
+          />
+          <p className="info">{prevPokemon.name}</p>
+        </div>
+      )}
+      {nextId <= 1025 && (
+        <div className="btn right-btn disabled">
+          <FaArrowCircleRight
+            onClick={() => {
+              navigate(`/detail/${nextId}`);
+            }}
+          />
+          <p className="info">{nextPokemon.name}</p>
+        </div>
+      )}
     </PageMoveButtonsStyle>
   );
 };
@@ -48,9 +58,12 @@ const PageMoveButtonsStyle = styled.div`
     right: 10px;
     top: 50%;
   }
-  .disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  .info {
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
   }
 `;
 

@@ -47,6 +47,14 @@ const GenerationButtonsStyle = styled.div`
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 700;
+    &:hover {
+      background-color: #eee;
+    }
+    &:focus {
+      outline: none;
+    }
   }
 `;
 

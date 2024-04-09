@@ -13,10 +13,23 @@ import PokemonStat from "../components/Detail/PokemonStat";
 const Detail = () => {
   const { id }: { id: string } = useParams() as { id: string };
   const [pokemon, setPokemon] = useState<pokemonDetail>();
+  const [nextPokemon, setNextPokemon] = useState<pokemonDetail>();
+  const [prevPokemon, setPrevPokemon] = useState<pokemonDetail>();
+
   useEffect(() => {
     if (id) {
       getPokemonDetail(parseInt(id)).then((data) => {
         setPokemon(data);
+      });
+    }
+    if (Number(id) > 0) {
+      getPokemonDetail(parseInt(id) - 1).then((data) => {
+        setPrevPokemon(data);
+      });
+    }
+    if (Number(id) < 1025) {
+      getPokemonDetail(parseInt(id) + 1).then((data) => {
+        setNextPokemon(data);
       });
     }
   }, [id]);
@@ -39,7 +52,14 @@ const Detail = () => {
           weight={pokemon.weight}
         />
       )}
-      {pokemon && <PageMoveButtons id={id} navigate={navigate} />}
+      {pokemon && nextPokemon && prevPokemon && (
+        <PageMoveButtons
+          id={id}
+          navigate={navigate}
+          nextPokemon={nextPokemon}
+          prevPokemon={prevPokemon}
+        />
+      )}
       {pokemon && <PokemonStat stats={pokemon.stats} />}
     </DetailStyle>
   );

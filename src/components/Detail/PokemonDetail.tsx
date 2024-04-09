@@ -20,7 +20,8 @@ const PokemonDetail = ({ detail, height, weight }: Props) => {
 
 const PokemonDetailStyle = styled.div`
   .detail{
-    height: 3rem;
+    height: 4rem;
+    margin: 5px;  
   }
   padding: 10px;
   width: 100%;

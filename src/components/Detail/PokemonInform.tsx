@@ -9,9 +9,9 @@ interface Props {
 const PokemonInform = ({ id, name, genera }: Props) => {
   return (
     <PokemonInformStyle>
-      <h1 className="poke-id">{id}번 포켓몬</h1>
+      <h1 className="poke-id">{id} 번 포켓몬</h1>
       <h1>{name}</h1>
-      <h1 className="poke-genera">-{genera}-</h1>
+      <h1 className="poke-genera">- {genera} -</h1>
     </PokemonInformStyle>
   );
 };
