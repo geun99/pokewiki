@@ -8,10 +8,19 @@ export interface poketype {
     url: string;
   };
 }
-
-export const getPokemonDatas = async (gene: number) => {
+export const getPokemonDatas = async (
+  gene: number,
+  page: number,
+  itemsPerPage: number
+) => {
   const allPokemonData = [];
-  for (let i = generation[gene - 1] + 1; i <= generation[gene]; i++) {
+  const startIdx = generation[gene - 1] + (page - 1) * itemsPerPage + 1;
+  const endIdx = Math.min(
+    generation[gene - 1] + page * itemsPerPage,
+    generation[gene]
+  );
+
+  for (let i = startIdx; i <= endIdx; i++) {
     const speciesResponse = await axios.get(
       `https://pokeapi.co/api/v2/pokemon-species/${i}`
     );

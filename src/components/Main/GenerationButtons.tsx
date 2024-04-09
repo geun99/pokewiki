@@ -2,9 +2,21 @@ import styled from "styled-components";
 
 interface Props {
   onGenerationClick: (generation: number) => void;
+  resetPagination: () => void;
 }
 
-const GenerationButtons = ({ onGenerationClick }: Props) => {
+const GenerationButtons = ({ onGenerationClick, resetPagination }: Props) => {
+  const location = [
+    "관동 지방",
+    "성도 지방",
+    "호연 지방",
+    "신오 지방",
+    "하나 지방",
+    "칼로스 지방",
+    "알로라 지방",
+    "가라르/히스이 지방",
+    "팔데아 지방",
+  ];
   const gene = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
     <GenerationButtonsStyle>
@@ -13,10 +25,11 @@ const GenerationButtons = ({ onGenerationClick }: Props) => {
           key={gen}
           onClick={() => {
             onGenerationClick(gen);
+            resetPagination();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          {gen}
+          {location[gen - 1]}
         </button>
       ))}
     </GenerationButtonsStyle>

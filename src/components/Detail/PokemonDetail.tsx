@@ -9,7 +9,7 @@ interface Props {
 const PokemonDetail = ({ detail, height, weight }: Props) => {
   return (
     <PokemonDetailStyle>
-      <p>{detail}</p>
+      <p className="detail">{detail}</p>
       <div className="height-weight">
         <p>키 : {height / 10}m</p>
         <p>몸무게 : {weight / 10}kg</p>
@@ -19,6 +19,9 @@ const PokemonDetail = ({ detail, height, weight }: Props) => {
 };
 
 const PokemonDetailStyle = styled.div`
+  .detail{
+    height: 3rem;
+  }
   padding: 10px;
   width: 100%;
   height: 100%;
