@@ -55,6 +55,19 @@ const PokeCardStyle = styled.div`
       width: 80%;
     }
   }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+    gap: 10px;
+    .card {
+      padding: 5px;
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+    .card img {
+      width: 100%;
+    }
+  }
 `;
 
 export default PokeCard;

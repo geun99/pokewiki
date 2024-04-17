@@ -12,7 +12,6 @@ interface Props {
 const PageMoveButtons = ({ id, navigate, prevPokemon, nextPokemon }: Props) => {
   const prevId = parseInt(id) - 1;
   const nextId = parseInt(id) + 1;
-  console.log(prevPokemon, nextPokemon, id);
   return (
     <PageMoveButtonsStyle>
       <NextPokemonButton
@@ -54,6 +53,23 @@ const PageMoveButtonsStyle = styled.div`
     font-weight: bold;
     text-align: center;
     line-height: 50px;
+  }
+  @media screen and (max-width: 768px) {
+    .info {
+      display: none;
+    }
+    .right-btn {
+      width: 50px;
+      position: absolute;
+      right: 15px;
+      color: #000;
+    }
+    .left-btn {
+      width: 50px;
+      position: absolute;
+      left: 5px;
+      color: #000;
+    }
   }
 `;
 

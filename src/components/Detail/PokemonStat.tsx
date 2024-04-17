@@ -65,6 +65,29 @@ const PokemonStatStyle = styled.div`
     background-color: #4caf50;
     text-align: center;
   }
+  @media (max-width: 768px) {
+    width: 90%;
+    .stat-container {
+      margin-left: 10px;
+      margin-bottom: 5px;
+    }
+    .stat-name {
+      width: 100px;
+      text-align: right;
+      margin-right: 5px;
+    }
+    .stat-num {
+      position: absolute;
+      font-size: 0.8rem;
+      font-weight: 700;
+      right: 42%;
+    }
+    .stat-bar {
+      width: 150px;
+      height: 15px;
+      border-radius: 7.5px;
+    }
+  }
 `;
 
 export default PokemonStat;

@@ -44,6 +44,14 @@ const PokemonDetailStyle = styled.div`
       margin: 5px;
       font-size: 1.2rem;
   }
+  @media (max-width: 768px) {
+   .height-weight{
+      flex-direction: column;
+      p{
+        flex-basis: 100%;
+      }
+    }
+  }
 `;
 
 export default PokemonDetail;

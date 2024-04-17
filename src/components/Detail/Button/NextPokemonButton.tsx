@@ -12,10 +12,11 @@ const NextPokemonButton = ({ navigate, nextPokemon, nextId }: Props) => {
       <div className="btn right-btn">
         <FaArrowCircleRight
           onClick={() => {
+            if (nextId === 1025) return;
             navigate(`/detail/${nextId}`);
           }}
         />
-        <p className="info">{nextPokemon}</p>
+        <p className="info">{nextId !== 1025 && nextPokemon}</p>
       </div>
     </NextPokemonButtonStyle>
   );

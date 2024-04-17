@@ -12,10 +12,11 @@ const PrevPokemonButton = ({ navigate, prevPokemon, prevId }: Props) => {
       <div className="btn left-btn">
         <FaArrowCircleLeft
           onClick={() => {
+            if (prevId === 0) return;
             navigate(`/detail/${prevId}`);
           }}
         />
-        <p className="info">{prevPokemon}</p>
+        <p className="info">{prevId > 0 && prevPokemon}</p>
       </div>
     </PrevPokemonButtonStyle>
   );

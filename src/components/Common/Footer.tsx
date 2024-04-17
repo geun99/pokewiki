@@ -19,6 +19,7 @@ const FooterStyle = styled.div`
   background: transparent;
   padding: 20px;
   border-radius: 10px;
+  text-align: center;
   p {
     display: flex;
     flex-direction: column;
